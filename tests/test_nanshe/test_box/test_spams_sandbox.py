@@ -9,7 +9,12 @@ import nose.plugins
 import nose.plugins.attrib
 
 import ctypes
-import multiprocessing as mp
+
+try:
+    import billiard as multiprocessing
+    mp = multiprocessing.get_context("spawn")
+except ImportError:
+    import multiprocessing as mp
 
 import numpy
 
